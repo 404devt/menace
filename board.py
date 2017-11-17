@@ -7,4 +7,4 @@ class Board():
 		for c in string:
 			self.arr.append(c)
 
-	
+	def 
