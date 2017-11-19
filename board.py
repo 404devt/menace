@@ -67,10 +67,31 @@ class Board():
 		return rboard
 
 	def transform(self, tid):
-		if tid not in range(1,6):
+		if tid not in range(5):
 			raise AssertionError("attempted illegal transformation")
-		if tid = 1:
-			return 
+		if tid == 0:
+			return transform_counter_clockwise()
+		if tid == 1:
+			return transform_clockwise()
+		if tid == 2:
+			return transform_180()
+		if tid == 3:
+			return transform_flip_horizontal()
+		if tid == 4:
+			return transform_flip_vertical()
+
+	def find_soft_equal_tuple(self, table):
+		for i in range(5):
+			cboard = transform(i)
+			if table.contains(cboard):
+				back_id = i
+				if i is 0:
+					back_id = 1
+				elif i is 1:
+					back_id = 0
+				return (cboard,back_id)
+		return (None, -1)
+
 
 	def print_board(self):
 		print()
