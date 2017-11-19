@@ -42,6 +42,18 @@ class Board():
 	def transform_180(self):
 		return self.transform_circular(4)
 
+	def transform_flip_vertical(self):
+		rboard = Board()
+		
+		for i in range(len(self.IND_CIRCLE)):
+			if i % 3 == 0:
+				rboard.arr[i+2] = self.arr[i]
+			elif i % 3 == 2:
+				rboard.arr[i-2] = self.arr[i]
+			else:
+				rboard.arr[i] = self.arr[i]
+		return rboard
+
 	def print_board(self):
 		print()
 		for i in range(len(self.arr)):
