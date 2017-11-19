@@ -96,6 +96,9 @@ class testing_menace(unittest.TestCase):
 		for i in range(len(transout.arr)):
 			self.assertEqual(transout.arr[i],confirm.arr[i])
 
+
+	
+
 	def test_board_tranform_clockwise2(self):
 		cstring = ''
 		cstring += 'x-x'
@@ -128,6 +131,131 @@ class testing_menace(unittest.TestCase):
 			self.assertEqual(transout.arr[i],confirm.arr[i])
 
 
+	def test_board_tranform_counter_clockwise1(self):
+		cstring = ''
+		cstring += 'x--'
+		cstring += '-o-'
+		cstring += 'x--'
+
+		orig = Board(cstring)
+
+		cstring = ''
+		cstring += '---'
+		cstring += '-o-'
+		cstring += 'x-x'
+
+		confirm = Board(cstring)
+
+		transout = orig.transform_counter_clockwise()
+
+		failure = False
+
+		for i in range(len(transout.arr)):
+			if transout.arr[i] != confirm.arr[i]:
+				failure = True
+
+		if failure:
+			orig.print_board()
+			transout.print_board()
+			confirm.print_board()
+
+		for i in range(len(transout.arr)):
+			self.assertEqual(transout.arr[i],confirm.arr[i])
+
+
+	def test_board_tranform_counter_clockwise2(self):
+		cstring = ''
+		cstring += 'x-x'
+		cstring += 'ox-'
+		cstring += 'x--'
+
+		orig = Board(cstring)
+
+		cstring = ''
+		cstring += 'x--'
+		cstring += '-x-'
+		cstring += 'xox'
+
+		confirm = Board(cstring)
+
+		transout = orig.transform_counter_clockwise()
+
+		failure = False
+
+		for i in range(len(transout.arr)):
+			if transout.arr[i] != confirm.arr[i]:
+				failure = True
+
+		if failure:
+			orig.print_board()
+			transout.print_board()
+			confirm.print_board()
+
+		for i in range(len(transout.arr)):
+			self.assertEqual(transout.arr[i],confirm.arr[i])
+
+	def test_board_tranform_180(self):
+		cstring = ''
+		cstring += 'x--'
+		cstring += '-o-'
+		cstring += 'x--'
+
+		orig = Board(cstring)
+
+		cstring = ''
+		cstring += '--x'
+		cstring += '-o-'
+		cstring += '--x'
+
+		confirm = Board(cstring)
+
+		transout = orig.transform_180()
+
+		failure = False
+
+		for i in range(len(transout.arr)):
+			if transout.arr[i] != confirm.arr[i]:
+				failure = True
+
+		if failure:
+			orig.print_board()
+			transout.print_board()
+			confirm.print_board()
+
+		for i in range(len(transout.arr)):
+			self.assertEqual(transout.arr[i],confirm.arr[i])
+
+
+	def test_board_tranform_180_2(self):
+		cstring = ''
+		cstring += 'x-x'
+		cstring += 'ox-'
+		cstring += 'x--'
+
+		orig = Board(cstring)
+
+		cstring = ''
+		cstring += '--x'
+		cstring += '-xo'
+		cstring += 'x-x'
+
+		confirm = Board(cstring)
+
+		transout = orig.transform_180()
+
+		failure = False
+
+		for i in range(len(transout.arr)):
+			if transout.arr[i] != confirm.arr[i]:
+				failure = True
+
+		if failure:
+			orig.print_board()
+			transout.print_board()
+			confirm.print_board()
+
+		for i in range(len(transout.arr)):
+			self.assertEqual(transout.arr[i],confirm.arr[i])
 
 if __name__ == "__main__":
 	unittest.main()
