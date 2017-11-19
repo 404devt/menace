@@ -54,6 +54,24 @@ class Board():
 				rboard.arr[i] = self.arr[i]
 		return rboard
 
+	def transform_flip_horizontal(self):
+		rboard = Board()
+		
+		for i in range(len(self.IND_CIRCLE)):
+			if i // 3 == 0:
+				rboard.arr[6+(i%3)] = self.arr[i]
+			elif i // 3 == 2:
+				rboard.arr[(i%3)] = self.arr[i]
+			else:
+				rboard.arr[i] = self.arr[i]
+		return rboard
+
+	def transform(self, tid):
+		if tid not in range(1,6):
+			raise AssertionError("attempted illegal transformation")
+		if tid = 1:
+			return 
+
 	def print_board(self):
 		print()
 		for i in range(len(self.arr)):
