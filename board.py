@@ -100,3 +100,11 @@ class Board():
             print(self.arr[i].upper(), end=' ')
             if i % 3 == 2:
                 print()
+
+    # will be relatively slow, maybe should save a var of the key
+    def get_key(self):
+        build = ''
+        for e in self.arr:
+            build += e.lower()
+        return build
+
