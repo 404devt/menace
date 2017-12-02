@@ -29,7 +29,9 @@ class Menace():
 		msum = 0
 		for n in mvlist:
 			msum += n
-		rnd = randint(0,msum)
+		ogrand = randint(0,msum-1)
+		rnd = ogrand
+
 		# print(rnd)
 		# print(mvlist)
 		sv = -1
@@ -38,6 +40,9 @@ class Menace():
 			if rnd < 0:
 				sv = i
 				break
+		if sv == -1:
+			raise AssertionError("MENACE tried -1 index")
+			print("msum=%d ogrand=%d" %(msum,ogrand))
 		self.move_history.append((board,sv))
 		cpy = board.transform(0)
 		cpy.arr[sv] = self.marker

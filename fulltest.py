@@ -7,12 +7,29 @@ men = Menace('x')
 
 
 
-for i in range(10):
+for i in range(1000):
 	b = Board()
 	men.new_game('x')
 	while not b.full() and b.detect_win() is None:
 		b = men.make_move(b)
 		b.print_board(nums=False)
+
+
+		# if b.count_token('x') -1 != b.count_token('o'):
+		# 	for i in range(100):
+		# 		print()
+		# 	print("AAAAAA MENACE PLAYED ON TOP OF SELF")
+		# 	for i in range(len(men.move_history)):
+		# 		mvboard = men.move_history[i][0]
+		# 		print("FOR THIS BOARD:" + str( men.move_history[i][1]))
+		# 		mvboard.print_board()
+		# 		print(men.ht.get_movelist(mvboard))
+		# 	for i in range(100):
+		# 		print()
+
+
+
+
 
 		if b.full() or b.detect_win() is not None:
 			break 
@@ -36,7 +53,7 @@ for i in range(10):
 
 	for i in range(3):
 		print()
-	print(b.detect_win() + " WINS!")
+	print(str(b.detect_win()) + " WINS!")
 	b.print_board()
 	for i in range(3):
 		print()
