@@ -1,6 +1,7 @@
 '''Implementation of Quadratic Probing Hash Table'''
 import re
 import string
+from board import *
 
 class BoardHashTable:
     ''' Quadratic Hash Class '''
@@ -37,7 +38,7 @@ class BoardHashTable:
                 self.arr.append(None)
             for tup in copy:
                 if tup is not None:
-                    self.put(tup[0],tup[1])
+                    self.put(Board(tup[0]),tup[1])
             if abs(oldct - self.count) >= 1:
                 print("old=%d, new=%d" % (oldct,self.count))
                 raise AssertionError("lost elements in rehash")
@@ -99,4 +100,9 @@ class BoardHashTable:
             return 2
         else:
             return ord(char)
+
+    def print_all_boards(self):
+        for i in range(self.tablesize):
+            if self.arr[i] is not None:
+                Board(self.arr[i][0]).print_board()
 

@@ -174,3 +174,10 @@ class Board():
         else:
             return False
 
+    def count_token(self,token):
+        c = 0
+        for i in self.arr:
+            if i is token:
+                c+=1
+        return c
+

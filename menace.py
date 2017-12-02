@@ -29,7 +29,9 @@ class Menace():
 		msum = 0
 		for n in mvlist:
 			msum += n
-		rnd = randint(0,msum)
+		ogrand = randint(0,msum-1)
+		rnd = ogrand
+
 		# print(rnd)
 		# print(mvlist)
 		sv = -1
@@ -38,6 +40,9 @@ class Menace():
 			if rnd < 0:
 				sv = i
 				break
+		if sv == -1:
+			raise AssertionError("MENACE tried -1 index")
+			print("msum=%d ogrand=%d" %(msum,ogrand))
 		self.move_history.append((board,sv))
 		cpy = board.transform(0)
 		cpy.arr[sv] = self.marker
@@ -46,12 +51,12 @@ class Menace():
 	def learn(self,delta):
 		for i in range(len(self.move_history)):
 			mvboard = self.move_history[i][0]
-			print("FOR THIS BOARD:")
-			mvboard.print_board()
-			print(self.ht.get_movelist(mvboard))
+			# print("FOR THIS BOARD:")
+			# mvboard.print_board()
+			# print(self.ht.get_movelist(mvboard))
 			self.ht.get_movelist(mvboard)[self.move_history[i][1]] += delta
 			self.ht.get_movelist(mvboard)[self.move_history[i][1]] = max(self.ht.get_movelist(mvboard)[self.move_history[i][1]],0)
-			print(self.ht.get_movelist(mvboard))
+			# print(self.ht.get_movelist(mvboard))
 
 	
 
