@@ -383,6 +383,13 @@ class testing_menace(unittest.TestCase):
 		for i in range(len(transout.arr)):
 			self.assertEqual(transout.arr[i],confirm.arr[i])
 
+	def test_board_detect_win(self):
+		cstring = ''
+		cstring += 'x--'
+		cstring += 'ox-'
+		cstring += 'x-x'
+		confirm = Board(cstring)
+		self.assertEqual(confirm.detect_win(),'x')
 if __name__ == "__main__":
 	unittest.main()
 

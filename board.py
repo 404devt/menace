@@ -17,7 +17,7 @@ class Board():
         if len(self.arr) != 9:
             raise AssertionError("invalid buildstring length")
 
-    def is_hard_equal(self,board):
+    def is_hard_equal(self, board):
         for i in range(len(self.arr)):
             if self.arr[i] != board.arr[i]:
                 return False
@@ -118,20 +118,47 @@ class Board():
         o if o Wins
         '''
         for i in range(6):
-            if ddh('o', i):
+            if self.ddh('o', i):
                 return 'o'
         for i in range(6):
-            if ddh('x', i):
+            if self.ddh('x', i):
                 return 'x'
-
-    def ddh(self):
-        '''
-        Helper Function
-        For detect_win
-        '''
 
     def make_movelist(self):
         l = []
         for i in range(9):
             l.append(2)
         return l
+
+
+    def ddh(self, marker, rtnum):
+        '''
+        Helper Function
+        For detect_win
+        '''
+        if (self.transform(rtnum)).testdiag(marker):
+            return True
+        elif (self.transform(rtnum)).testmid(marker):
+            return True
+        elif (self.transform(rtnum)).testtop(marker):
+            return True
+        return False
+
+    def testdiag(self, marker):
+        if self.arr[0] ==  marker and self.arr[4] == marker and self.arr[8] == marker:
+            return True
+        else:
+            return False
+
+    def testmid(self, marker):
+        if self.arr[1] == marker and self.arr[4] == marker and self.arr[7] == marker:
+            return True
+        else:
+            return False
+
+    def testtop(self, marker):
+        if self.arr[0] == marker and self.arr[1] == marker and self.arr[2] == marker:
+            return True
+        else:
+            return False
+
