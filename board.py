@@ -113,7 +113,20 @@ class Board():
     def detect_win(self):
         '''
         Returns:
-        None if Tie
-        X if X Wins
-        O if O Wins
+        None if No Win
+        x if x Wins
+        o if o Wins
         '''
+        for i in range(6):
+            if ddh('o', i):
+                return 'o'
+        for i in range(6):
+            if ddh('x', i):
+                return 'x'
+
+    def ddh(self):
+        '''
+        Helper Function 
+        For detect_win
+        '''
+        pass
