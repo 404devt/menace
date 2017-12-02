@@ -95,11 +95,14 @@ class Board():
         return (None, -1)
 
 
-    def print_board(self):
+    def print_board(self, nums=False):
         print()
         for i in range(len(self.arr)):
             # print(i, end=' ')
-            print(self.arr[i].upper(), end=' ')
+            c = self.arr[i].upper()
+            if nums and c == '-':
+                c = i
+            print(c, end=' ')
             if i % 3 == 2:
                 print()
 
@@ -110,6 +113,12 @@ class Board():
             build += e.lower()
         return build
     
+    def full(self):
+        for c in self.arr:
+            if c is '-':
+                return False
+        return True
+
     def detect_win(self):
         '''
         Returns:
