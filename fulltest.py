@@ -14,7 +14,7 @@ for i in range(10):
 		b = men.make_move(b)
 		b.print_board(nums=False)
 
-		if not b.full() and b.detect_win() is None:
+		if b.full() and b.detect_win() is not None:
 			break 
 		while True:
 			try:
@@ -36,7 +36,7 @@ for i in range(10):
 
 	for i in range(3):
 		print()
-	print(b.detect_win().upper() + " WINS!")
+	print(b.detect_win() + " WINS!")
 	b.print_board()
 	for i in range(3):
 		print()
