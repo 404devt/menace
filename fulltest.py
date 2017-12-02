@@ -12,7 +12,7 @@ negative = ['no','nope','n']
 positive = ['yes','yep','y']
 
 
-for i in range(10):
+for i in range(2500):
 	b = Board()
 	exitb = False
 	men.new_game('x')
