@@ -34,8 +34,9 @@ for i in range(250):
 
 
 		while True:
-			try:
-				n = int(input())
+			try:	
+				if i % 3 == 1:
+					n = int(input())
 				else:
 					b = sec.make_move(b)
 					break
@@ -66,6 +67,7 @@ for i in range(250):
 			sec.learn(-1)
 		elif b.detect_win() == None:
 			sec.learn(1)
+
 
 	for i in range(3):
 		print()
