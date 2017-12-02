@@ -14,7 +14,7 @@ for i in range(10):
 		b = men.make_move(b)
 		b.print_board(nums=False)
 
-		if b.detect_win() is not None:
+		if not b.full() and b.detect_win() is None:
 			break 
 		while True:
 			try:
