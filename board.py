@@ -83,14 +83,14 @@ class Board():
             return self.transform_flip_vertical()
 
     def find_soft_equal_tuple(self, table):
-        for i in range(5):
+        for i in range(6):
             cboard = transform(i)
             if table.contains(cboard):
                 back_id = i
-                if i is 0:
+                if i is 2:
                     back_id = 1
                 elif i is 1:
-                    back_id = 0
+                    back_id = 2
                 return (cboard,back_id)
         return (None, -1)
 
@@ -130,3 +130,8 @@ class Board():
         For detect_win
         '''
 
+    def make_movelist(self):
+        l = []
+        for i in range(9):
+            l.append(2)
+        return l
