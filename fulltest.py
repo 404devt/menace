@@ -24,11 +24,11 @@ for i in range(250):
 			for i in range(100):
 				print()
 			print("AAAAAA MENACE PLAYED ON TOP OF SELF")
-			for i in range(len(men.move_history)):
-				mvboard = men.move_history[i][0]
-				print("FOR THIS BOARD:" + str( men.move_history[i][1]))
-				mvboard.print_board()
-				print(men.ht.get_movelist(mvboard))
+			# for i in range(len(men.move_history)):
+			# 	mvboard = men.move_history[i][0]
+			# 	print("FOR THIS BOARD:" + str( men.move_history[i][1]))
+			# 	mvboard.print_board()
+			# 	print(men.ht.get_movelist(mvboard))
 			for i in range(100):
 				print()
 
