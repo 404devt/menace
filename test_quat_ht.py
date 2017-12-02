@@ -9,7 +9,7 @@ class testing_menace(unittest.TestCase):
 		board = Board('-o-o-o-o-')
 		bht.put(board)
 		self.assertTrue(bht.contains(board))
-		self.assertListEqual(bht.get_movelist(board),[2,2,2,2,2,2,2,2,2])
+		self.assertListEqual(bht.get_movelist(board),[2,0,2,0,2,0,2,0,2])
 
 	def test_ht_a_bit_harder(self):
 		bht = BoardHashTable()
@@ -17,7 +17,7 @@ class testing_menace(unittest.TestCase):
 		bht.put(board)
 		for i in range(6):
 			self.assertTrue(bht.contains(board.transform(i)))
-		self.assertListEqual(bht.get_movelist(board),[2,2,2,2,2,2,2,2,2])
+		self.assertListEqual(bht.get_movelist(board),[2,0,2,0,2,0,2,0,2])
 
 	def test_ht__harder(self):
 		bht = BoardHashTable()
@@ -27,7 +27,7 @@ class testing_menace(unittest.TestCase):
 		topboard = Board('xo-------')
 		for i in range(6):
 			self.assertEqual(bht.contains(topboard.transform(i)),expect[i])
-		self.assertListEqual(bht.get_movelist(board),[2,2,2,2,2,2,2,2,2])
+		self.assertListEqual(bht.get_movelist(board),[2,2,2,2,2,2,0,0,2])
 
 
 
