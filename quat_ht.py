@@ -2,9 +2,9 @@
 import re
 import string
 
-class HashTableQuadPr:
+class BoardHashTable:
     ''' Quadratic Hash Class '''
-    def __init__(self, size=10):
+    def __init__(self, size=251):
         ''' Initialization of Hash Table '''
         self.tablesize = size
         self.count = 0
@@ -27,7 +27,7 @@ class HashTableQuadPr:
 
     def put(self, board, movelist=None):
         '''inserts the keyitem pair into the table, rehashes if table too large'''
-        if get_load_fact() > 0.4:
+        if self.get_load_fact() > 0.4:
             copy = self.arr
             oldct = self.count
             self.tablesize = self.tablesize*2 + 1
@@ -60,7 +60,7 @@ class HashTableQuadPr:
         if self.arr[indx] is None:
             return False
 
-        if self.arr[indx][0] == key:
+        if self.arr[indx][0] == board.get_key():
             return True
 
     def get_movelist(self, board):
@@ -71,7 +71,7 @@ class HashTableQuadPr:
         if self.arr[indx] == None:
             raise LookupError()
 
-        if self.arr[indx][0] == key:
+        if self.arr[indx][0] == board.get_key():
             return self.arr[indx][1]
 
 
@@ -87,7 +87,7 @@ class HashTableQuadPr:
         '''hashes based on horners rule'''
         num = 0
         for i in range(min(len(key),9)):
-            num = 31*num + strangeord(key[i])
+            num = 31*num + self.strangeord(key[i])
         return num % table_size
 
     def strangeord(self, char):

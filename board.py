@@ -108,3 +108,8 @@ class Board():
             build += e.lower()
         return build
 
+    def make_movelist(self):
+        l = []
+        for i in range(9):
+            l.append(2)
+        return l
