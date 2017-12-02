@@ -101,3 +101,8 @@ class BoardHashTable:
         else:
             return ord(char)
 
+    def print_all_boards(self):
+        for i in range(self.tablesize):
+            if self.arr[i] is not None:
+                Board(self.arr[i][0]).print_board()
+
