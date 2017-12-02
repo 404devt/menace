@@ -19,6 +19,18 @@ class testing_menace(unittest.TestCase):
 			self.assertTrue(bht.contains(board.transform(i)))
 		self.assertListEqual(bht.get_movelist(board),[2,2,2,2,2,2,2,2,2])
 
+	def test_ht__harder(self):
+		bht = BoardHashTable()
+		board = Board('------xo-')
+		bht.put(board)
+		expect = [False,False,False,False,True,False]
+		topboard = Board('xo-------')
+		for i in range(6):
+			self.assertEqual(bht.contains(topboard.transform(i)),expect[i])
+		self.assertListEqual(bht.get_movelist(board),[2,2,2,2,2,2,2,2,2])
+
+
+
 if __name__ == "__main__":
 	unittest.main()
 
