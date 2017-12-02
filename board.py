@@ -17,7 +17,7 @@ class Board():
         if len(self.arr) != 9:
             raise AssertionError("invalid buildstring length")
 
-    def is_hard_equal(self,board):
+    def is_hard_equal(self, board):
         for i in range(len(self.arr)):
             if self.arr[i] != board.arr[i]:
                 return False
@@ -118,10 +118,10 @@ class Board():
         o if o Wins
         '''
         for i in range(6):
-            if ddh('o', i):
+            if self.ddh('o', i):
                 return 'o'
         for i in range(6):
-            if ddh('x', i):
+            if self.ddh('x', i):
                 return 'x'
 
     def ddh(self, marker, rtnum):
@@ -129,11 +129,11 @@ class Board():
         Helper Function
         For detect_win
         '''
-        if (self.transform(rtnum)).testdiag():
+        if (self.transform(rtnum)).testdiag(marker):
             return True
-        elif (self.transform(rtnum)).testmid():
+        elif (self.transform(rtnum)).testmid(marker):
             return True
-        elif (self.transform(rtnum)).testtop():
+        elif (self.transform(rtnum)).testtop(marker):
             return True
         return False
 
