@@ -82,7 +82,6 @@ class Board():
         if tid == 5:
             return self.transform_flip_vertical()
 
-
     def find_soft_equal_tuple(self, table):
         for i in range(6):
             cboard = transform(i)
@@ -110,6 +109,26 @@ class Board():
         for e in self.arr:
             build += e.lower()
         return build
+    
+    def detect_win(self):
+        '''
+        Returns:
+        None if No Win
+        x if x Wins
+        o if o Wins
+        '''
+        for i in range(6):
+            if ddh('o', i):
+                return 'o'
+        for i in range(6):
+            if ddh('x', i):
+                return 'x'
+
+    def ddh(self):
+        '''
+        Helper Function
+        For detect_win
+        '''
 
     def make_movelist(self):
         l = []
