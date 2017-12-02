@@ -1,41 +1,28 @@
 from board import *
 from quat_ht import *
 from menace import *
-
+from random import randint
 
 men = Menace('x')
 
 
 
-for i in range(1000):
+for i in range(1515):
 	b = Board()
 	men.new_game('x')
 	while not b.full() and b.detect_win() is None:
 		b = men.make_move(b)
 		b.print_board(nums=False)
 
-
-		# if b.count_token('x') -1 != b.count_token('o'):
-		# 	for i in range(100):
-		# 		print()
-		# 	print("AAAAAA MENACE PLAYED ON TOP OF SELF")
-		# 	for i in range(len(men.move_history)):
-		# 		mvboard = men.move_history[i][0]
-		# 		print("FOR THIS BOARD:" + str( men.move_history[i][1]))
-		# 		mvboard.print_board()
-		# 		print(men.ht.get_movelist(mvboard))
-		# 	for i in range(100):
-		# 		print()
-
-
-
-
-
 		if b.full() or b.detect_win() is not None:
 			break 
+
 		while True:
 			try:
-				n = int(input())
+				if i > 1500 or i % 100 == 1:
+					n = int(input())
+				else:
+					n = randint(1,9)
 				if n in range(1,10) and b.arr[n-1] == '-' :
 					b.arr[n-1] = 'o'
 					break
