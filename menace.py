@@ -51,12 +51,12 @@ class Menace():
 	def learn(self,delta):
 		for i in range(len(self.move_history)):
 			mvboard = self.move_history[i][0]
-			print("FOR THIS BOARD:")
-			mvboard.print_board()
-			print(self.ht.get_movelist(mvboard))
+			# print("FOR THIS BOARD:")
+			# mvboard.print_board()
+			# print(self.ht.get_movelist(mvboard))
 			self.ht.get_movelist(mvboard)[self.move_history[i][1]] += delta
 			self.ht.get_movelist(mvboard)[self.move_history[i][1]] = max(self.ht.get_movelist(mvboard)[self.move_history[i][1]],0)
-			print(self.ht.get_movelist(mvboard))
+			# print(self.ht.get_movelist(mvboard))
 
 
 
