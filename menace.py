@@ -53,7 +53,7 @@ class Menace():
 			self.ht.get_movelist(mvboard)[self.move_history[i][1]] = max(self.ht.get_movelist(mvboard)[self.move_history[i][1]],0)
 			print(self.ht.get_movelist(mvboard))
 
-
+	
 
 
 

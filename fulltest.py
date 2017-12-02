@@ -4,11 +4,14 @@ from menace import *
 
 
 men = Menace('x')
-
+exitcodes = ['quit', 'q', 'bye', 'exit', 'quit()', 'exit()', 'terminate']
+negative = ['no','nope','n']
+positive = ['yes','yep','y']
 
 
 for i in range(10):
 	b = Board()
+	exitb = False
 	men.new_game('x')
 	while not b.full() and b.detect_win() is None:
 		b = men.make_move(b)
@@ -18,13 +21,25 @@ for i in range(10):
 			break 
 		while True:
 			try:
-				n = int(input())
-				if n in range(1,10) and b.arr[n-1] == '-' :
-					b.arr[n-1] = 'o'
+				n = input()
+				if n.lower() in exitcodes:
+					exitb = True
+					print("Thanks For Playing!")
 					break
+				else:
+					try:
+						n = int(n)
+						if n in range(1,10) and b.arr[n-1] == '-' :
+							b.arr[n-1] = 'o'
+							break
+						else:
+							print("TRY AGAIN")
+					except:
+						print("TRY AGAIN")
 			except:
 				pass
-			print("TRY AGAIN")
+		if exitb:
+			exit()
 		b.print_board()
 
 	if b.detect_win() == 'o':
@@ -40,6 +55,24 @@ for i in range(10):
 	b.print_board()
 	for i in range(3):
 		print()
+	#PLAYER INTERFACE 
+	#print('Play Again?')
+	# response = input()
+	# if response.lower() in negative:
+	# 	exit()
+	# elif response.lower() not in positive:
+	# 	print('INVALID RESPONSE')
+	# 	while True:
+	# 		print('Play Again?')
+	# 		response = input()
+	# 		if response.lower() in negative:
+	# 			exit()
+	# 		elif response.lower() not in positive:
+	# 			print('INVALID RESPONSE')
+
+
+
+
 
 
 
