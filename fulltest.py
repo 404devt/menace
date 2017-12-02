@@ -19,8 +19,8 @@ for i in range(10):
 		while True:
 			try:
 				n = int(input())
-				if n in range(1,10) and b.arr[n+1] == '-' :
-					b.arr[n+1] = 'o'
+				if n in range(1,10) and b.arr[n-1] == '-' :
+					b.arr[n-1] = 'o'
 					break
 			except:
 				pass
