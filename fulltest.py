@@ -15,12 +15,16 @@ for i in range(10):
 	men.new_game('x')
 	while not b.full() and b.detect_win() is None:
 		b = men.make_move(b)
+		print()
+		print("Menace Makes Its Move!")
 		b.print_board(nums=False)
 
 		if b.full() or b.detect_win() is not None:
 			break 
 		while True:
 			try:
+				print()
+				print("Make Your Move:")
 				n = input()
 				if n.lower() in exitcodes:
 					exitb = True
@@ -40,6 +44,8 @@ for i in range(10):
 				pass
 		if exitb:
 			exit()
+		print()
+		print("Your Move:")
 		b.print_board()
 
 	if b.detect_win() == 'o':
@@ -51,24 +57,29 @@ for i in range(10):
 
 	for i in range(3):
 		print()
-	print(b.detect_win() + " WINS!")
+	if b.detect_win() is None:
+		print("Cats Game! Everybody's a Winner!")
+	else:
+		print(b.detect_win() + " WINS!")
 	b.print_board()
 	for i in range(3):
 		print()
 	#PLAYER INTERFACE 
-	#print('Play Again?')
-	# response = input()
-	# if response.lower() in negative:
-	# 	exit()
-	# elif response.lower() not in positive:
-	# 	print('INVALID RESPONSE')
-	# 	while True:
-	# 		print('Play Again?')
-	# 		response = input()
-	# 		if response.lower() in negative:
-	# 			exit()
-	# 		elif response.lower() not in positive:
-	# 			print('INVALID RESPONSE')
+	print('Play Again?')
+	response = input()
+	if response.lower() in negative:
+		print()
+		print("Thanks For Playing!")
+		exit()
+	elif response.lower() not in positive:
+		print('INVALID RESPONSE')
+		while True:
+			print('Play Again?')
+			response = input()
+			if response.lower() in negative:
+				exit()
+			elif response.lower() not in positive:
+				print('INVALID RESPONSE')
 
 
 
