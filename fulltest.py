@@ -2,6 +2,9 @@ from board import *
 from quat_ht import *
 from menace import *
 
+#UserInterfaceControl
+playagain = False
+#####################
 
 men = Menace('x')
 exitcodes = ['quit', 'q', 'bye', 'exit', 'quit()', 'exit()', 'terminate']
@@ -65,21 +68,22 @@ for i in range(10):
 	for i in range(3):
 		print()
 	#PLAYER INTERFACE 
-	print('Play Again?')
-	response = input()
-	if response.lower() in negative:
-		print()
-		print("Thanks For Playing!")
-		exit()
-	elif response.lower() not in positive:
-		print('INVALID RESPONSE')
-		while True:
-			print('Play Again?')
-			response = input()
-			if response.lower() in negative:
-				exit()
-			elif response.lower() not in positive:
-				print('INVALID RESPONSE')
+	if playagain:
+		print('Play Again?')
+		response = input()
+		if response.lower() in negative:
+			print()
+			print("Thanks For Playing!")
+			exit()
+		elif response.lower() not in positive:
+			print('INVALID RESPONSE')
+			while True:
+				print('Play Again?')
+				response = input()
+				if response.lower() in negative:
+					exit()
+				elif response.lower() not in positive:
+					print('INVALID RESPONSE')
 
 
 
