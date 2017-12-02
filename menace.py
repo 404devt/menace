@@ -1,4 +1,49 @@
 from board import *
 from quat_ht import *
+from random import randint
 
 class Menace():
+	def __init__(self, xoro):
+		self.new_game(xoro)
+		self.ht = BoardHashTable()
+
+
+	def new_game(self, xoro):
+		self.move_history = []
+		self.marker = xoro
+
+	def make_move(self,board):
+		tup = board.find_soft_equal_tuple(self.ht)
+		if tup[0] is None:
+			self.ht.put(board)
+			safe = board
+			backid = 0
+		else:
+			safe = tup[0]
+			backid = tup[1]
+		mm = self.safe_move(safe)
+		return mm.transform(backid)
+
+	def safe_move(self,board):
+		mvlist = self.ht.get_movelist(board)
+		msum = 0
+		for n in mvlist:
+			msum += n
+		rnd = randint(0,msum)
+		print(rnd)
+		print(mvlist)
+		sv = -1
+		for i in range(9):
+			rnd -= mvlist[i]
+			if rnd < 0:
+				sv = i
+				break
+		self.move_history.append((board,sv))
+		cpy = board.transform(0)
+		cpy.arr[sv] = self.marker
+		return cpy
+
+
+
+
+
