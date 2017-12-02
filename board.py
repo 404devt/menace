@@ -124,9 +124,33 @@ class Board():
             if ddh('x', i):
                 return 'x'
 
-    def ddh(self):
+    def ddh(self, marker, rtnum):
         '''
         Helper Function
         For detect_win
         '''
+        if (self.transform(rtnum)).testdiag():
+            return True
+        elif (self.transform(rtnum)).testmid():
+            return True
+        elif (self.transform(rtnum)).testtop():
+            return True
+        return False
 
+    def testdiag(self, marker):
+        if self.arr[0] ==  marker and self.arr[4] == marker and self.arr[8] == marker:
+            return True
+        else:
+            return False
+
+    def testmid(self, marker):
+        if self.arr[1] == marker and self.arr[4] == marker and self.arr[7] == marker:
+            return True
+        else:
+            return False
+
+    def testtop(self, marker):
+        if self.arr[0] == marker and self.arr[1] == marker and self.arr[2] == marker:
+            return True
+        else:
+            return False
