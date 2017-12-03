@@ -28,10 +28,10 @@ class Menace():
 		error = False
 		if ogboard.count_token('-') -1 != ret.count_token('-'):
 			error = True
-		if ogboard.count_token(self.token) +1 != ret.count_token(self.token):
+		if ogboard.count_token(self.marker) +1 != ret.count_token(self.marker):
 			error = True
 		nt = 'o'
-		if self.token == 'o':
+		if self.marker == 'o':
 			nt = 'x'
 		if ogboard.count_token(nt) != ret.count_token(nt):
 			error = True
