@@ -12,10 +12,10 @@ class BoardHashTable:
         self.tablesize = 251
         self.count = 0
         self.arr = []
-        if seedfilename == None:
-            for i in range(size):
-                self.arr.append(None)
-        else:
+        
+        for i in range(self.tablesize):
+            self.arr.append(None)
+        if seedfilename != None:
             self.load_file(seedfilename)
 
     def get_conflict_resolved_index(self,key):
@@ -48,7 +48,7 @@ class BoardHashTable:
                 print("old=%d, new=%d" % (oldct,self.count))
                 raise AssertionError("lost elements in rehash")
 
-
+        print("ok")
         indx = self.get_conflict_resolved_index(board.get_key())
 
         if self.arr[indx] == None:
@@ -112,6 +112,7 @@ class BoardHashTable:
         for i in range(self.tablesize):
             if self.arr[i] is not None:
                 Board(self.arr[i][0]).print_board()
+                print(self.arr[i][1])
 
     def menace_save(self,filename):
         f = open(filename, 'w')

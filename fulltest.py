@@ -6,6 +6,7 @@ from menace import *
 playagain = False
 #####################
 
+# men = Menace('x','mensave49.menace')
 men = Menace('x')
 exitcodes = ['quit', 'q', 'bye', 'exit', 'quit()', 'exit()', 'terminate']
 negative = ['no','nope','n']
@@ -15,8 +16,9 @@ positive = ['yes','yep','y']
 for i in range(2500):
 	b = Board()
 	exitb = False
+	# men.ht.print_all_boards()
 
-	if i % 50 == 49:
+	if i % 5 == 4:
 		men.ht.menace_save('mensave%d.menace' % i)
 
 
