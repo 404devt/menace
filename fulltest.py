@@ -6,14 +6,14 @@ from menace import *
 playagain = False
 #####################
 
-# men = Menace('x','mensave49.menace')
-men = Menace('x')
+men = Menace('x','mensave44.menace')
+# men = Menace('x')
 exitcodes = ['quit', 'q', 'bye', 'exit', 'quit()', 'exit()', 'terminate']
 negative = ['no','nope','n']
 positive = ['yes','yep','y']
 
 
-for i in range(2500):
+for i in range(45,2500):
 	b = Board()
 	exitb = False
 	# men.ht.print_all_boards()
@@ -69,8 +69,10 @@ for i in range(2500):
 		print()
 	if b.detect_win() is None:
 		print("Cats Game! Everybody's a Winner!")
+	elif men.marker == b.detect_win():
+		print("MENACE WINS!")
 	else:
-		print(b.detect_win() + " WINS!")
+		print("PLAYER WINS")
 	b.print_board()
 	for i in range(3):
 		print()

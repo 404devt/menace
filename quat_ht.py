@@ -48,7 +48,7 @@ class BoardHashTable:
                 print("old=%d, new=%d" % (oldct,self.count))
                 raise AssertionError("lost elements in rehash")
 
-        print("ok")
+        # print("ok")
         indx = self.get_conflict_resolved_index(board.get_key())
 
         if self.arr[indx] == None:
