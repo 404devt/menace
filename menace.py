@@ -3,9 +3,12 @@ from quat_ht import *
 from random import randint
 
 class Menace():
-	def __init__(self, xoro):
-		self.new_game(xoro)
-		self.ht = BoardHashTable()
+	def __init__(self, xoro, seedfilename=None):
+		self.new_game(xoro)		
+		if seedfilename != None:
+			self.ht = BoardHashTable(seedfilename)
+		else:
+			self.ht = BoardHashTable()
 
 
 	def new_game(self, xoro):

@@ -2,16 +2,21 @@
 import re
 import string
 from board import *
+from ast import literal_eval
+
 
 class BoardHashTable:
     ''' Quadratic Hash Class '''
-    def __init__(self, size=251):
+    def __init__(self, seedfilename=None):
         ''' Initialization of Hash Table '''
-        self.tablesize = size
+        self.tablesize = 251
         self.count = 0
         self.arr = []
-        for i in range(size):
-            self.arr.append(None)
+        if seedfilename == None:
+            for i in range(size):
+                self.arr.append(None)
+        else:
+            self.load_file(seedfilename)
 
     def get_conflict_resolved_index(self,key):
         ''' Gets a free index in the table based on 
@@ -47,7 +52,9 @@ class BoardHashTable:
         indx = self.get_conflict_resolved_index(board.get_key())
 
         if self.arr[indx] == None:
-            self.arr[indx] = (board.get_key(),board.make_movelist())
+            if movelist is None:
+                movelist = board.make_movelist()
+            self.arr[indx] = (board.get_key(),movelist)
             self.count += 1
         else:
             raise AssertionError("double put")
@@ -113,5 +120,14 @@ class BoardHashTable:
                 line = self.arr[i][0] + "|" + str(self.arr[i][1]) + '\n'
                 f.write(line)
         f.close()
+
+    def load_file(self,filename):
+        f = open(filename,'r')
+        while True:
+            line = f.readline()
+            if not line:
+                break
+            pretup = line.split('|')
+            self.put(Board(pretup[0]),literal_eval(pretup[1]))
 
 
