@@ -61,8 +61,16 @@ class Menace():
 	def safe_move(self,board):
 		mvlist = self.ht.get_movelist(board)
 		msum = 0
+		
 		for n in mvlist:
 			msum += n
+
+		if msum <= 1:
+			l = board.make_movelist()
+			for i in range(9):
+				self.ht.get_movelist(board)[i]= l[i]
+			msum += n
+
 		ogrand = randint(0,msum-1)
 		rnd = ogrand
 
