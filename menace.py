@@ -13,6 +13,7 @@ class Menace():
 		self.marker = xoro
 
 	def make_move(self,board):
+		ogboard = board.transform(0)
 		tup = board.find_soft_equal_tuple(self.ht)
 		if tup[0] is None:
 			self.ht.put(board)
@@ -22,7 +23,34 @@ class Menace():
 			safe = tup[0]
 			backid = tup[1]
 		mm = self.safe_move(safe)
-		return mm.transform(backid)
+		ret = mm.transform(backid)
+
+		error = False
+		if ogboard.count_token('-') -1 != ret.count_token('-'):
+			error = True
+		if ogboard.count_token(self.token) +1 != ret.count_token(self.token):
+			error = True
+		nt = 'o'
+		if self.token = 'o':
+			nt = 'x'
+		if ogboard.count_token(nt) != ret.count_token(nt):
+			error = True
+
+
+		if error:
+			for i in range(10):
+				print()
+			print('MAKE MOVE DETECETD ERROR')
+			print("og board")
+			ogboard.print_board()
+			print("menace intended board")
+			ret.print_board()
+			print("menace saved board")
+			self.move_history[-1][0].print_board()
+			print("supposedly he moved at i=%d h=%d" % (self.move_history[-1][1], self.move_history[-1][1] + 1))
+			for i in range(10):
+				print()
+
 
 	def safe_move(self,board):
 		mvlist = self.ht.get_movelist(board)
