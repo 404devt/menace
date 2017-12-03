@@ -51,6 +51,8 @@ class Menace():
 			for i in range(10):
 				print()
 
+		return ret
+
 
 	def safe_move(self,board):
 		mvlist = self.ht.get_movelist(board)
