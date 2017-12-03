@@ -106,3 +106,12 @@ class BoardHashTable:
             if self.arr[i] is not None:
                 Board(self.arr[i][0]).print_board()
 
+    def menace_save(self,filename):
+        f = open(filename, 'w')
+        for i in range(self.tablesize):
+            if self.arr[i] is not None:
+                line = self.arr[i][0] + "|" + str(self.arr[i][1]) + '\n'
+                f.write(line)
+        f.close()
+
+

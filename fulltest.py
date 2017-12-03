@@ -15,6 +15,11 @@ positive = ['yes','yep','y']
 for i in range(2500):
 	b = Board()
 	exitb = False
+
+	if i % 50 == 49:
+		men.ht.menace_save('mensave%d.menace' % i)
+
+
 	men.new_game('x')
 	while not b.full() and b.detect_win() is None:
 		b = men.make_move(b)
