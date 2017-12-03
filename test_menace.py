@@ -390,6 +390,21 @@ class testing_menace(unittest.TestCase):
 		cstring += 'x-x'
 		confirm = Board(cstring)
 		self.assertEqual(confirm.detect_win(),'x')
+
+	def test_bugfix_1(self):
+		cstring = ''
+		cstring +='oxo'
+		cstring +='oxx'
+		cstring +='xo-'
+		confirm = Board(cstring)
+		dstring = ''
+		dstring +='oxo'
+		dstring +='xxo'
+		dstring +='-ox'
+		confirm2 = Board(dstring)
+		self.assertListEqual(confirm.transform_flip_vertical().arr, confirm2.arr)
+		self.assertListEqual(confirm2.transform_flip_vertical().arr, confirm.arr)
+
 if __name__ == "__main__":
 	unittest.main()
 

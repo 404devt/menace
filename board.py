@@ -45,7 +45,7 @@ class Board():
     def transform_flip_vertical(self):
         rboard = Board()
         
-        for i in range(len(self.IND_CIRCLE)):
+        for i in range(9):
             if i % 3 == 0:
                 rboard.arr[i+2] = self.arr[i]
             elif i % 3 == 2:
@@ -57,7 +57,7 @@ class Board():
     def transform_flip_horizontal(self):
         rboard = Board()
         
-        for i in range(len(self.IND_CIRCLE)):
+        for i in range(9):
             if i // 3 == 0:
                 rboard.arr[6+(i%3)] = self.arr[i]
             elif i // 3 == 2:
@@ -106,7 +106,7 @@ class Board():
             if i % 3 == 2:
                 print()
 
-    # will be relatively slow, maybe should save a var of the key
+    # will _be relatively slow, maybe should save a var of the key
     def get_key(self):
         build = ''
         for e in self.arr:
