@@ -4,12 +4,17 @@
 
 const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
 
+
 enum _ttt_symbol_{
 	SYMBOL_X,
 	SYMBOL_O,
 	SYMBOL_E
 };
 typedef enum _ttt_symbol_ symb_t;
+
+const symb_t bbb[9] ={SYMBOL_X, SYMBOL_O, SYMBOL_E,
+			 SYMBOL_E, SYMBOL_O, SYMBOL_O,
+			 SYMBOL_X, SYMBOL_E, SYMBOL_E};
 
 struct _boardtype_ 
 {
@@ -77,11 +82,11 @@ void board_transform_flip_LR(board_t* from, board_t* to)
 	for (int i = 0; i < 9; i++)
 	{
 		if (i%3==0)
-			to->arr[i+2] = from->arr[i]
+			to->arr[i+2] = from->arr[i];
 		else if (i%3==2)
-			to->arr[i-2] = from->arr[i]
+			to->arr[i-2] = from->arr[i];
 		else
-			to->arr[i] = from->arr[i]
+			to->arr[i] = from->arr[i];
 	}
 }
 
@@ -90,53 +95,18 @@ void board_transform_flip_TB(board_t* from, board_t* to)
 	for (int i = 0; i < 9; i++)
 	{
 		if (i/3==0)
-			to->arr[6+(i%3)] = from->arr[i]
+			to->arr[6+(i%3)] = from->arr[i];
 		else if (i/3==2)
-			to->arr[i%3] = from->arr[i]
+			to->arr[i%3] = from->arr[i];
 		else
-			to->arr[i] = from->arr[i]
+			to->arr[i] = from->arr[i];
 	}
 }
 
 int main()
 {
 	board_t a;
-	for(int i = 0; i < 9; i++)
-	{
-		if (i % 3 == 1)
-			a.arr[i] = SYMBOL_X;
-		else
-			a.arr[i] = SYMBOL_E;
-	}
-	board_t b;
-	for(int i = 0; i < 9; i++)
-	{
-		if (i % 3 == 1)
-			b.arr[i] = SYMBOL_X;
-		else
-			b.arr[i] = SYMBOL_E;
-	}
-	board_t c;
-	for(int i = 0; i < 9; i++)
-	{
-		if (i / 3 == 2)
-			c.arr[i] = SYMBOL_X;
-		else
-			c.arr[i] = SYMBOL_E;
-	}
-	board_t d;
-	board_t e;
-	board_transform_circular(&b,&d,0);
-	board_transform_circular(&d,&e,2);
+	for (int i = 0; i < 9; i++)
+		a.arr[i] = bbb[i];
 	print_board(a);
-	print_board(b);
-	print_board(c);
-	print_board(d);
-	print_board(e);
-	printf("A = B? -> %d\n", boards_hard_equal(a,b));
-	printf("B = C? -> %d\n", boards_hard_equal(b,c));
-	printf("C = A? -> %d\n", boards_hard_equal(c,a));
-	printf("B = D? -> %d\n", boards_hard_equal(b,d));
-	printf("D = E? -> %d\n", boards_hard_equal(d,e));
-	printf("B = E? -> %d\n", boards_hard_equal(b,e));
 }
