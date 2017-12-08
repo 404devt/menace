@@ -24,29 +24,27 @@ char get_char_from_symbol(ttt_symbol symb)
 		return '-';
 }
 
-void sprint_board(char* buf, boardtype b)
+int sprint_board(char* buf, boardtype b)
 {
-	sprintf(buf + strlen(buf),"\n");
+	int count = 0;
+	count += sprintf(buf+count,"\n");
 	for(int i = 0; i < 9; i++)
 	{
 
-		sprintf(buf + strlen(buf),"%c",get_char_from_symbol(b.arr[i]));
-		sprintf(buf + strlen(buf)," ");
+		count += sprintf(buf + count,"%c",get_char_from_symbol(b.arr[i]));
+		count += sprintf(buf+count," ");
 		if (i % 3 == 2)
 		{
-			sprintf(buf + strlen(buf),"\n");
+			count += sprintf(buf+count,"\n");
 		}
 	}
-	sprintf(buf + strlen(buf),"\n");
+	count += sprintf(buf + count,"\n");
+	return count;
 }
 
 void print_board(boardtype b)
 {
 	char buf[30];
-	for (int i = 0; i < 30; i++)
-	{
-		buf[i] = 0;
-	}
 	sprint_board(buf,b);
 	printf("%s",buf);
 }
