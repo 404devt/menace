@@ -9,3 +9,5 @@
 *.swp
 *.swo
 *.mypy_cache
+*.exe
+a.out
