@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
+
 enum _ttt_symbol_{
 	SYMBOL_X,
 	SYMBOL_O,
@@ -60,6 +62,16 @@ bool boards_hard_equal(board_t a, board_t b)
 	return true;
 }
 
+void board_transform_circular(board_t* from, board_t* to, int amount)
+{
+	for (int i = 0; i < 8; i++)
+	{
+		int indx = (i+amount) % 8;
+		to->arr[IND_CIRCLE[indx]] = from->arr[IND_CIRCLE[i]];
+	}
+	to->arr[4] = from->arr[4];
+}
+
 int main()
 {
 	board_t a;
@@ -86,10 +98,19 @@ int main()
 		else
 			c.arr[i] = SYMBOL_E;
 	}
+	board_t d;
+	board_t e;
+	board_transform_circular(&b,&d,0);
+	board_transform_circular(&d,&e,2);
 	print_board(a);
 	print_board(b);
 	print_board(c);
+	print_board(d);
+	print_board(e);
 	printf("A = B? -> %d\n", boards_hard_equal(a,b));
 	printf("B = C? -> %d\n", boards_hard_equal(b,c));
 	printf("C = A? -> %d\n", boards_hard_equal(c,a));
+	printf("B = D? -> %d\n", boards_hard_equal(b,d));
+	printf("D = E? -> %d\n", boards_hard_equal(d,e));
+	printf("B = E? -> %d\n", boards_hard_equal(b,e));
 }
