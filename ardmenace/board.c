@@ -72,6 +72,32 @@ void board_transform_circular(board_t* from, board_t* to, int amount)
 	to->arr[4] = from->arr[4];
 }
 
+void board_transform_flip_LR(board_t* from, board_t* to)
+{
+	for (int i = 0; i < 9; i++)
+	{
+		if (i%3==0)
+			to->arr[i+2] = from->arr[i]
+		else if (i%3==2)
+			to->arr[i-2] = from->arr[i]
+		else
+			to->arr[i] = from->arr[i]
+	}
+}
+
+void board_transform_flip_TB(board_t* from, board_t* to)
+{
+	for (int i = 0; i < 9; i++)
+	{
+		if (i/3==0)
+			to->arr[6+(i%3)] = from->arr[i]
+		else if (i/3==2)
+			to->arr[i%3] = from->arr[i]
+		else
+			to->arr[i] = from->arr[i]
+	}
+}
+
 int main()
 {
 	board_t a;
