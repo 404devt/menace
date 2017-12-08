@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 enum _ttt_symbol_{
 	SYMBOL_X,
@@ -25,24 +26,27 @@ char get_char_from_symbol(ttt_symbol symb)
 
 void sprint_board(char* buf, boardtype b)
 {
-	sprintf(buf,"\n");
+	sprintf(buf + strlen(buf),"\n");
 	for(int i = 0; i < 9; i++)
 	{
 
-		sprintf(buf,"%c",get_char_from_symbol(b.arr[i]));
-		sprintf(buf," ");
+		sprintf(buf + strlen(buf),"%c",get_char_from_symbol(b.arr[i]));
+		sprintf(buf + strlen(buf)," ");
 		if (i % 3 == 2)
 		{
-			sprintf(buf,"\n");
+			sprintf(buf + strlen(buf),"\n");
 		}
 	}
-	sprintf(buf,"\n");
-	puts(buf);
+	sprintf(buf + strlen(buf),"\n");
 }
 
 void print_board(boardtype b)
 {
 	char buf[30];
+	for (int i = 0; i < 30; i++)
+	{
+		buf[i] = 0;
+	}
 	sprint_board(buf,b);
 	printf("%s",buf);
 }
