@@ -23,20 +23,28 @@ char get_char_from_symbol(ttt_symbol symb)
 		return '-';
 }
 
-void print_board(boardtype b)
+void sprint_board(char* buf, boardtype b)
 {
-	printf("\n");
+	sprintf(buf,"\n");
 	for(int i = 0; i < 9; i++)
 	{
 
-		printf("%c",get_char_from_symbol(b.arr[i]));
-		printf(" ");
+		sprintf(buf,"%c",get_char_from_symbol(b.arr[i]));
+		sprintf(buf," ");
 		if (i % 3 == 2)
 		{
-			printf("\n");
+			sprintf(buf,"\n");
 		}
 	}
-	print("\n")
+	sprintf(buf,"\n");
+	puts(buf);
+}
+
+void print_board(boardtype b)
+{
+	char buf[30];
+	sprint_board(buf,b);
+	printf("%s",buf);
 }
 
 int main()
