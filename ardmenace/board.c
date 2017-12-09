@@ -98,6 +98,17 @@ void board_transform_generic(board_t* from, board_t* to, uint8_t tid)
 		board_transform_flip_TB(from,to);
 }
 
+
+bool board_is_full(board_t* board)
+{
+	for (int i = 0; i < 9; i++)
+		if (board->arr[i] == SYMBOL_E)
+			return false;
+	return true;
+}
+
+
+
 int main()
 {
 	board_t a;

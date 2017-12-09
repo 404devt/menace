@@ -40,6 +40,6 @@ void board_transform_circular(board_t* from, board_t* to, int amount);
 void board_transform_flip_LR(board_t* from, board_t* to);
 void board_transform_flip_TB(board_t* from, board_t* to);
 void board_transform_generic(board_t* from, board_t* to, uint8_t tid);
+bool board_is_full(board_t* board);
 int main();
-
 #endif
