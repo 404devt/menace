@@ -1,5 +1,10 @@
 #include "board.h"
 
+const symb_t bbb[9] ={SYMBOL_E, SYMBOL_E, SYMBOL_E,
+			 SYMBOL_E, SYMBOL_O, SYMBOL_E,
+			 SYMBOL_E, SYMBOL_E, SYMBOL_E};
+
+
 char get_char_from_symbol(symb_t symb)
 {
 	if (symb == SYMBOL_X)
