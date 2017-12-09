@@ -2,6 +2,13 @@
 #include <string.h>
 #include <stdbool.h>
 
+#define ID_TRANS_NONE 0
+#define ID_TRANS_CLOCKWISE 1
+#define ID_TRANS_180 2
+#define ID_TRANS_COUNTERCLOCKWISE 3
+#define ID_TRANS_FLIP_LR 4
+#define ID_TRANS_FLIP_TB 5
+
 const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
 
 
@@ -32,14 +39,14 @@ char get_char_from_symbol(symb_t symb)
 		return '-';
 }
 
-int sprint_board(char* buf, board_t b)
+int sprint_board(char* buf, board_t* b)
 {
 	int count = 0;
 	count += sprintf(buf+count,"\n");
 	for(int i = 0; i < 9; i++)
 	{
 
-		count += sprintf(buf + count,"%c",get_char_from_symbol(b.arr[i]));
+		count += sprintf(buf + count,"%c",get_char_from_symbol(b->arr[i]));
 		count += sprintf(buf+count," ");
 		if (i % 3 == 2)
 		{
@@ -50,7 +57,7 @@ int sprint_board(char* buf, board_t b)
 	return count;
 }
 
-void print_board(board_t b)
+void print_board(board_t* b)
 {
 	char buf[30];
 	sprint_board(buf,b);
@@ -103,10 +110,37 @@ void board_transform_flip_TB(board_t* from, board_t* to)
 	}
 }
 
+void board_transform_generic(board_t* from, board_t* to, uint8_t tid)
+{
+	if (tid == ID_TRANS_NONE)
+		for (int i = 0; i < 9; i++)
+			to->arr[i] = from->arr[i];
+	else if (tid == ID_TRANS_CLOCKWISE)
+		board_transform_circular(from,to,2);
+	else if (tid == ID_TRANS_180)
+		board_transform_circular(from,to,4);
+	else if (tid == ID_TRANS_COUNTERCLOCKWISE)
+		board_transform_circular(from,to,6);
+	else if (tid == ID_TRANS_FLIP_LR)
+		board_transform_flip_LR(from,to);
+	else if (tid == ID_TRANS_FLIP_TB)
+		board_transform_flip_TB(from,to);
+}
+
 int main()
 {
 	board_t a;
 	for (int i = 0; i < 9; i++)
 		a.arr[i] = bbb[i];
-	print_board(a);
+	printf("Orig board:");
+	print_board(&a);
+
+	board_t to;
+	for (int i = 0; i <= 5; i++)
+	{
+		board_transform_generic(&a,&to,i);
+		print_board(&to);
+	}
+
+
 }
