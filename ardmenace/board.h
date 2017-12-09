@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <math.h>
 
 #define ID_TRANS_NONE 0
 #define ID_TRANS_CLOCKWISE 1
@@ -41,5 +42,6 @@ void board_transform_flip_LR(board_t* from, board_t* to);
 void board_transform_flip_TB(board_t* from, board_t* to);
 void board_transform_generic(board_t* from, board_t* to, uint8_t tid);
 bool board_is_full(board_t* board);
+int board_to_key(board_t* board);
 int main();
 #endif

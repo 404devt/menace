@@ -13,7 +13,7 @@ char get_char_from_symbol(symb_t symb)
 int sprint_board(char* buf, board_t* b)
 {
 	int count = 0;
-	count += sprintf(buf+count,"\n");
+	// count += sprintf(buf+count,"\n");
 	for(int i = 0; i < 9; i++)
 	{
 
@@ -24,7 +24,7 @@ int sprint_board(char* buf, board_t* b)
 			count += sprintf(buf+count,"\n");
 		}
 	}
-	count += sprintf(buf + count,"\n");
+	// count += sprintf(buf + count,"\n");
 	return count;
 }
 
@@ -33,6 +33,7 @@ void print_board(board_t* b)
 	char buf[30];
 	sprint_board(buf,b);
 	printf("%s",buf);
+	printf("key: %d\n\n", board_to_key(b));
 }
 
 bool boards_hard_equal(board_t a, board_t b)
@@ -107,14 +108,27 @@ bool board_is_full(board_t* board)
 	return true;
 }
 
-
+int board_to_key(board_t* board)
+{
+	int num = 0;
+	for (int i = 0; i < 9; i++)
+	{
+		int mult = 0;
+		if (board->arr[i] == SYMBOL_O)
+			mult = 1;
+		else if (board->arr[i] == SYMBOL_X)
+			mult = 2;
+		num += mult * pow(3,i);
+	}
+	return num;
+}
 
 int main()
 {
 	board_t a;
 	for (int i = 0; i < 9; i++)
 		a.arr[i] = bbb[i];
-	printf("Orig board:");
+	printf("Orig board:\n");
 	print_board(&a);
 
 	board_t to;
@@ -123,6 +137,5 @@ int main()
 		board_transform_generic(&a,&to,i);
 		print_board(&to);
 	}
-
 
 }
