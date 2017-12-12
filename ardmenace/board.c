@@ -125,7 +125,7 @@ int board_to_key(board_t* board)
 			mult = 2;
 		num = 3*num + mult;
 	}
-	return num;
+	return num + 1;
 }
 
 int main()

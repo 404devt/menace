@@ -1,10 +1,7 @@
 #ifndef _BOARD_H_
 #define _BOARD_H_
 
-#include <stdio.h>
-#include <string.h>
-#include <stdbool.h>
-#include <stdint.h>
+#include "plattest.h"
 
 #define ID_TRANS_NONE 0
 #define ID_TRANS_CLOCKWISE 1
