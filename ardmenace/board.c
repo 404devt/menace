@@ -1,5 +1,7 @@
 #include "board.h"
 
+const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
+
 const symb_t bbb[9] ={SYMBOL_E, SYMBOL_X, SYMBOL_E,
 			 SYMBOL_E, SYMBOL_O, SYMBOL_E,
 			 SYMBOL_E, SYMBOL_E, SYMBOL_E};

@@ -1,6 +1,6 @@
 
 #include "plattest.h"
-// #include "board.h"
+#include "board.h"
 
 // const int SIZE_LIST[6] = {101, 211, 431, 863, 1741, 3491}
 #define HT_TABLE_SIZE = 431

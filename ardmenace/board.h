@@ -10,8 +10,6 @@
 #define ID_TRANS_FLIP_LR 4
 #define ID_TRANS_FLIP_TB 5
 
-const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
-
 
 enum _ttt_symbol_{
 	SYMBOL_X,
