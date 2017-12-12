@@ -1,6 +1,6 @@
 #include "board.h"
 
-const symb_t bbb[9] ={SYMBOL_E, SYMBOL_E, SYMBOL_E,
+const symb_t bbb[9] ={SYMBOL_E, SYMBOL_X, SYMBOL_E,
 			 SYMBOL_E, SYMBOL_O, SYMBOL_E,
 			 SYMBOL_E, SYMBOL_E, SYMBOL_E};
 
@@ -123,7 +123,7 @@ int board_to_key(board_t* board)
 			mult = 1;
 		else if (board->arr[i] == SYMBOL_X)
 			mult = 2;
-		num += mult * pow(3,i);
+		num = 3*num + mult;
 	}
 	return num;
 }

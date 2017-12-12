@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
-#include <math.h>
+#include <stdint.h>
 
 #define ID_TRANS_NONE 0
 #define ID_TRANS_CLOCKWISE 1
