@@ -34,5 +34,8 @@ void board_transform_flip_TB(board_t* from, board_t* to);
 void board_transform_generic(board_t* from, board_t* to, uint8_t tid);
 bool board_is_full(board_t* board);
 int board_to_key(board_t* board);
+void board_fill_from_key(board_t* board, int key);
+void board_fill_empty_moves(int key, uint8_t* movearr);
+
 int main();
 #endif

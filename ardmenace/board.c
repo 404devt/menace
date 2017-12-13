@@ -130,6 +130,19 @@ int board_to_key(board_t* board)
 	return num + 1;
 }
 
+void board_fill_from_key(board_t* board, int key)
+{
+	for (int i = 0; i < 9; i++)
+	{
+		
+	}
+}
+
+void board_fill_empty_moves(int key, uint8_t* movearr)
+{
+
+}
+
 int main()
 {
 	board_t a;
