@@ -10,21 +10,17 @@
 #define ID_TRANS_FLIP_LR 4
 #define ID_TRANS_FLIP_TB 5
 
-
-enum _ttt_symbol_{
-	SYMBOL_X,
-	SYMBOL_O,
-	SYMBOL_E
-};
-typedef enum _ttt_symbol_ symb_t;
+#define SYMBOL_E 0
+#define SYMBOL_O 1
+#define SYMBOL_X 2
 
 struct _boardtype_ 
 {
-	symb_t arr[9];
+	uint8_t arr[9];
 };
 typedef struct _boardtype_ board_t;
 
-char get_char_from_symbol(symb_t symb);
+char get_char_from_symbol(uint8_t symb);
 int sprint_board(char* buf, board_t* b);
 void print_board(board_t* b);
 bool boards_hard_equal(board_t a, board_t b);

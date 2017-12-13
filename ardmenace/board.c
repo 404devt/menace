@@ -2,16 +2,16 @@
 
 const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
 
-const symb_t bbb[9] ={SYMBOL_E, SYMBOL_X, SYMBOL_E,
-			 SYMBOL_E, SYMBOL_O, SYMBOL_E,
-			 SYMBOL_E, SYMBOL_E, SYMBOL_E};
+const uint8_t bbb[9] ={0, 2, 0,
+			 0, 1, 0,
+			 0, 0, 0};
 
 
-char get_char_from_symbol(symb_t symb)
+char get_char_from_symbol(uint8_t symb)
 {
-	if (symb == SYMBOL_X)
+	if (symb == 2)
 		return 'X';
-	else if (symb == SYMBOL_O)
+	else if (symb == 1)
 		return 'O';
 	else
 		return '-';
@@ -134,7 +134,7 @@ void board_fill_from_key(board_t* board, int key)
 {
 	for (int i = 0; i < 9; i++)
 	{
-		
+
 	}
 }
 
