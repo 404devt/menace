@@ -14,6 +14,8 @@
 #define SYMBOL_O 1
 #define SYMBOL_X 2
 
+#define MENACE_STARTING_NUMBER 2
+
 struct _boardtype_ 
 {
 	uint8_t arr[9];

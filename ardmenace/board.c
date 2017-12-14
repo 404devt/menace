@@ -142,7 +142,15 @@ void board_fill_from_key(board_t* board, int key)
 
 void board_fill_empty_moves(int key, uint8_t* movearr)
 {
-
+	board_t board;
+	board_fill_from_key(&board, key);
+	for (int i = 0; i < 9; i++)
+	{
+		if (board.arr[i] == SYMBOL_E)
+			movearr[i] = MENACE_STARTING_NUMBER;
+		else
+			movearr[i] = 0;
+	}
 }
 
 int main()
@@ -152,10 +160,24 @@ int main()
 		a.arr[i] = bbb[i];
 	printf("Orig board:\n");
 	print_board(&a);
-	board_fill_from_key(&a, board_to_key(&a));
+	int key = board_to_key(&a);
+	board_fill_from_key(&a, key);
 	printf("FILLED BOARD\n");
 	print_board(&a);
 	printf("END FILLED BOARD\n");
+
+
+	uint8_t moves[9];
+	board_fill_empty_moves(key,moves);
+	printf("MOVES: [");
+	for(int i = 0; i < 9; i++)
+	{
+		printf("%d",moves[i]);
+		if(i != 8)
+			printf(",");
+	}
+	printf("]\n");
+
 	board_t to;
 	for (int i = 0; i <= 5; i++)
 	{
