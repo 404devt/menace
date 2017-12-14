@@ -132,9 +132,11 @@ int board_to_key(board_t* board)
 
 void board_fill_from_key(board_t* board, int key)
 {
-	for (int i = 0; i < 9; i++)
+	key -= 1;
+	for (int i = 8; i >= 0; i--)
 	{
-
+		board->arr[i] = (key%3);
+		key /= 3;
 	}
 }
 
@@ -150,7 +152,10 @@ int main()
 		a.arr[i] = bbb[i];
 	printf("Orig board:\n");
 	print_board(&a);
-
+	board_fill_from_key(&a, board_to_key(&a));
+	printf("FILLED BOARD\n");
+	print_board(&a);
+	printf("END FILLED BOARD\n");
 	board_t to;
 	for (int i = 0; i <= 5; i++)
 	{
