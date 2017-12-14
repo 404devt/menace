@@ -24,6 +24,11 @@ void ht_clear()
 // void ht_put_withmoves(int key, )
 void ht_put(int key)
 {
+	ht_element_t newelement;
+	newelement.key = key;
+	board_fill_empty_moves(newelement.key, newelement.moves);
+	int index = ht_hash(key);
+	
 
 }
 
