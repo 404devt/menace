@@ -1,6 +1,8 @@
 
 #include "plattest.h"
 #include "board.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 // const int SIZE_LIST[6] = {101, 211, 431, 863, 1741, 3491}
 #define HT_TABLE_SIZE 431
@@ -24,10 +26,10 @@ void error(char* msg)
 void ht_sprint_element(char* buf, int indx)
 {
 	int n = 0;
-	n += sprint(buf+n, "key=%07d  ", ht_arr[indx].key);
+	n += sprintf(buf+n, "key=%07d  ", ht_arr[indx].key);
 	for(int i = 0; i < 9; i++)
 	{
-		n += sprint(buf+n, "%02d ", (ht_arr[indx].moves[i]%100));
+		n += sprintf(buf+n, "%02d ", (ht_arr[indx].moves[i]%100));
 	}
 }
 
@@ -71,8 +73,18 @@ void ht_put(int key)
 	if (ht_arr[fountslot].key != 0)
 		error("find element slot wants to reinsert a key");
 	ht_arr[fountslot].key = key;
-	board_fill_empty_moves(key,&(ht_arr[fountslot].moves));
+	board_fill_empty_moves(key,(ht_arr[fountslot].moves));
 	ht_used_slots++;
+}
+
+int main()
+{
+	char buf[256];
+	for(int i = 0; i < HT_TABLE_SIZE; i++)
+	{
+		ht_sprint_element(buf, i);
+		printf("indx=%d %s\n",i,buf);
+	}
 }
 
 
