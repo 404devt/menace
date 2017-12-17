@@ -15,21 +15,54 @@ typedef struct _ht_element_t_ ht_element_t;
 
 ht_element_t ht_arr[HT_TABLE_SIZE];
 
+void error(char* msg)
+{
+	printf("ERROR: %s",msg );
+	exit(-1);
+}
+
 void ht_clear()
 {
 	for (int i = 0; i < HT_TABLE_SIZE; i++)
 		ht_arr[i].key = 0;
 }
 
-// void ht_put_withmoves(int key, )
+int ht_hash(int key)
+{
+	long long int horner = 0;
+	while (key > 0)
+	{
+		horner = 31 * horner + (key%10);
+		key /= 10;
+	}
+	return horner % HT_TABLE_SIZE;
+}
+
+int ht_find_element_slot(int key)
+{
+	int slot = ht_hash(key);
+	int add = 1;
+	while (1)
+	{
+		if (ht_arr[slot].key == key)
+			return slot;
+		if (ht_arr[slot].key == 0)
+			return slot;
+		if (add > 300)
+			error("ht too full");
+		slot += add;
+		add += 2;
+	}
+}
+
 void ht_put(int key)
 {
-	ht_element_t newelement;
-	newelement.key = key;
-	board_fill_empty_moves(newelement.key, newelement.moves);
-	int index = ht_hash(key);
-	
-
+	int fountslot = ht_find_element_slot(key);
+	if (ht_arr[fountslot].key != 0)
+		error("find element slot wants to reinsert a key");
+	ht_arr[fountslot].key = key;
+	board_fill_empty_moves(key,&(ht_arr[fountslot].moves));
+	ht_used_slots++;
 }
 
 
