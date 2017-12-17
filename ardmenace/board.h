@@ -35,5 +35,5 @@ int board_to_key(board_t* board);
 void board_fill_from_key(board_t* board, int key);
 void board_fill_empty_moves(int key, uint8_t* movearr);
 
-int main();
+// int main();
 #endif
