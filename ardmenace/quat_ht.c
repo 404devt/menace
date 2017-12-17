@@ -21,6 +21,16 @@ void error(char* msg)
 	exit(-1);
 }
 
+void ht_sprint_element(char* buf, int indx)
+{
+	int n = 0;
+	n += sprint(buf+n, "key=%07d  ", ht_arr[indx].key);
+	for(int i = 0; i < 9; i++)
+	{
+		n += sprint(buf+n, "%02d ", (ht_arr[indx].moves[i]%100));
+	}
+}
+
 void ht_clear()
 {
 	for (int i = 0; i < HT_TABLE_SIZE; i++)
