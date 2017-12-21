@@ -1,24 +1,17 @@
 
-#include "plattest.h"
-#include "board.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "quat_ht.h"
 
-// const int SIZE_LIST[6] = {101, 211, 431, 863, 1741, 3491}
-#define HT_TABLE_SIZE 431
+// int ht_used_slots = 0;
 
-const uint8_t bbb[9] ={0, 2, 0,
-			 0, 1, 0,
-			 0, 0, 0};
+// struct _ht_element_t_ {
+// 	int key;
+// 	uint8_t moves[9];
+// };
+// typedef struct _ht_element_t_ ht_element_t;
+
+// ht_element_t ht_arr[HT_TABLE_SIZE];
 
 int ht_used_slots = 0;
-
-struct _ht_element_t_ {
-	int key;
-	uint8_t moves[9];
-};
-typedef struct _ht_element_t_ ht_element_t;
-
 ht_element_t ht_arr[HT_TABLE_SIZE];
 
 void error(char* msg)
@@ -91,25 +84,8 @@ void ht_print_fulltable()
 		printf("indx=%03d %s\n",i,buf);
 	}
 }
-
 int main()
 {
-	ht_print_fulltable();
-
-	board_t a;
-	for (int i = 0; i < 9; i++)
-		a.arr[i] = bbb[i];
-
-	print_board(&a);
-
-	ht_put(board_to_key(&a));
-
-	ht_print_fulltable();
-
-	int slot = ht_find_element_slot(board_to_key(&a));
-	board_fill_from_key(&a, ht_arr[slot].key);
-	print_board(&a);
 
 }
-
 
