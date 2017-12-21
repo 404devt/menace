@@ -7,6 +7,10 @@
 // const int SIZE_LIST[6] = {101, 211, 431, 863, 1741, 3491}
 #define HT_TABLE_SIZE 431
 
+const uint8_t bbb[9] ={0, 2, 0,
+			 0, 1, 0,
+			 0, 0, 0};
+
 int ht_used_slots = 0;
 
 struct _ht_element_t_ {
@@ -35,6 +39,7 @@ void ht_sprint_element(char* buf, int indx)
 
 void ht_clear()
 {
+	ht_used_slots = 0;
 	for (int i = 0; i < HT_TABLE_SIZE; i++)
 		ht_arr[i].key = 0;
 }
@@ -85,6 +90,26 @@ int main()
 		ht_sprint_element(buf, i);
 		printf("indx=%d %s\n",i,buf);
 	}
+
+	board_t a;
+	for (int i = 0; i < 9; i++)
+		a.arr[i] = bbb[i];
+
+	print_board(&a);
+
+	ht_put(board_to_key(&a));
+
+	// char buf[256];
+	for(int i = 0; i < HT_TABLE_SIZE; i++)
+	{
+		ht_sprint_element(buf, i);
+		printf("indx=%d %s\n",i,buf);
+	}
+
+	int slot = ht_find_element_slot(board_to_key(&a));
+	board_fill_from_key(&a, ht_arr[slot].key);
+	print_board(&a);
+
 }
 
 

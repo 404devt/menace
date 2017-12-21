@@ -2,9 +2,9 @@
 
 const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
 
-const uint8_t bbb[9] ={0, 2, 0,
-			 0, 1, 0,
-			 0, 0, 0};
+// const uint8_t bbb[9] ={0, 2, 0,
+// 			 0, 1, 0,
+// 			 0, 0, 0};
 
 
 char get_char_from_symbol(uint8_t symb)
