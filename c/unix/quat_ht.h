@@ -1,11 +1,9 @@
+#ifndef _QUAT_HT_H_
+#define _QUAT_HT_H_
 
-//NEED INCLUDE GUARDS
 
-
-#include "plattest.h"
+#include "find-platform.h"
 #include "board.h"
-
-// const int SIZE_LIST[6] = {101, 211, 431, 863, 1741, 3491}
 
 #define HT_TABLE_SIZE 431
 
@@ -22,6 +20,6 @@ int ht_hash(int key);
 int ht_find_element_slot(int key);
 void ht_put(int key);
 void ht_print_fulltable();
+int ht_get_table_used_count();
 
-//REPLACE MAIN WITH Get tableused count
-int main();
+#endif

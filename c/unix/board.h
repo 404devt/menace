@@ -1,7 +1,7 @@
 #ifndef _BOARD_H_
 #define _BOARD_H_
 
-#include "plattest.h"
+#include "find-platform.h"
 
 #define ID_TRANS_NONE 0
 #define ID_TRANS_CLOCKWISE 1
@@ -34,6 +34,4 @@ bool board_is_full(board_t* board);
 int board_to_key(board_t* board);
 void board_fill_from_key(board_t* board, int key);
 void board_fill_empty_moves(int key, uint8_t* movearr);
-
-// int main();
 #endif

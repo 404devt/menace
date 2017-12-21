@@ -2,11 +2,6 @@
 
 const uint8_t IND_CIRCLE[8] = {0,1,2,5,8,7,6,3}; 
 
-// const uint8_t bbb[9] ={0, 2, 0,
-// 			 0, 1, 0,
-// 			 0, 0, 0};
-
-
 char get_char_from_symbol(uint8_t symb)
 {
 	if (symb == 2)
@@ -152,37 +147,3 @@ void board_fill_empty_moves(int key, uint8_t* movearr)
 			movearr[i] = 0;
 	}
 }
-
-// int main()
-// {
-// 	board_t a;
-// 	for (int i = 0; i < 9; i++)
-// 		a.arr[i] = bbb[i];
-// 	printf("Orig board:\n");
-// 	print_board(&a);
-// 	int key = board_to_key(&a);
-// 	board_fill_from_key(&a, key);
-// 	printf("FILLED BOARD\n");
-// 	print_board(&a);
-// 	printf("END FILLED BOARD\n");
-
-
-// 	uint8_t moves[9];
-// 	board_fill_empty_moves(key,moves);
-// 	printf("MOVES: [");
-// 	for(int i = 0; i < 9; i++)
-// 	{
-// 		printf("%d",moves[i]);
-// 		if(i != 8)
-// 			printf(",");
-// 	}
-// 	printf("]\n");
-
-// 	board_t to;
-// 	for (int i = 0; i <= 5; i++)
-// 	{
-// 		board_transform_generic(&a,&to,i);
-// 		print_board(&to);
-// 	}
-
-// }

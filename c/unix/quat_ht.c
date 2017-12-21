@@ -1,16 +1,6 @@
 
 #include "quat_ht.h"
 
-// int ht_used_slots = 0;
-
-// struct _ht_element_t_ {
-// 	int key;
-// 	uint8_t moves[9];
-// };
-// typedef struct _ht_element_t_ ht_element_t;
-
-// ht_element_t ht_arr[HT_TABLE_SIZE];
-
 int ht_used_slots = 0;
 ht_element_t ht_arr[HT_TABLE_SIZE];
 
@@ -84,8 +74,9 @@ void ht_print_fulltable()
 		printf("indx=%03d %s\n",i,buf);
 	}
 }
-int main()
-{
 
+int ht_get_table_used_count()
+{
+	return ht_used_slots;
 }
 
