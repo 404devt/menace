@@ -30,7 +30,7 @@ void error(char* msg)
 void ht_sprint_element(char* buf, int indx)
 {
 	int n = 0;
-	n += sprintf(buf+n, "key=%07d  ", ht_arr[indx].key);
+	n += sprintf(buf+n, "key=%06d  ", ht_arr[indx].key);
 	for(int i = 0; i < 9; i++)
 	{
 		n += sprintf(buf+n, "%02d ", (ht_arr[indx].moves[i]%100));
@@ -82,14 +82,19 @@ void ht_put(int key)
 	ht_used_slots++;
 }
 
-int main()
+void ht_print_fulltable()
 {
 	char buf[256];
 	for(int i = 0; i < HT_TABLE_SIZE; i++)
 	{
 		ht_sprint_element(buf, i);
-		printf("indx=%d %s\n",i,buf);
+		printf("indx=%03d %s\n",i,buf);
 	}
+}
+
+int main()
+{
+	ht_print_fulltable();
 
 	board_t a;
 	for (int i = 0; i < 9; i++)
@@ -99,12 +104,7 @@ int main()
 
 	ht_put(board_to_key(&a));
 
-	// char buf[256];
-	for(int i = 0; i < HT_TABLE_SIZE; i++)
-	{
-		ht_sprint_element(buf, i);
-		printf("indx=%d %s\n",i,buf);
-	}
+	ht_print_fulltable();
 
 	int slot = ht_find_element_slot(board_to_key(&a));
 	board_fill_from_key(&a, ht_arr[slot].key);
