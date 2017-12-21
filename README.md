@@ -2,7 +2,7 @@
 
 Self-learning tic-tac-toe bot.
 
-Menace stands for **M**achine **E**ducable **K**nots **A**nd **C**rosses **E**ngine.
+Menace stands for **M**achine **E**ducable K**n**ots **A**nd **C**rosses **E**ngine.
 
 The idea and name for this project was adopted from [Matt Parker's](http://standupmaths.com/) [video](https://www.youtube.com/watch?v=R9c-_neaxeU) of a pile of matchboxes that could learn to play tic-tac-toe, published on his [youtube channel](https://www.youtube.com/channel/UCSju5G2aFaWMqn-_0YBtq5A), standupmaths. 
 
