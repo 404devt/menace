@@ -93,7 +93,7 @@ class Menace():
 		if cpy.arr[sv] != '-':
 			for x in range(10):
 				print()
-			print("what the fuck Menace msum=%d ogrand=%d sv=%d" %(msum,ogrand,sv))
+			print("what Menace msum=%d ogrand=%d sv=%d" %(msum,ogrand,sv))
 			board.print_board()
 			for x in range(10):
 				print()

@@ -1,9 +1,6 @@
 
 #include "menace.h"
 
-uint8_t history_indx = 0;
-uint8_t my_symbol = -1;
-
 struct _menace_history_t_
 {
 	int key;
@@ -11,10 +8,16 @@ struct _menace_history_t_
 };
 typedef struct _menace_history_t_ menace_history_t;
 
+uint8_t history_indx = 0;
+uint8_t my_symbol = -1;
+bool has_init = false;
+
 menace_history_t history[9];
 
 void menace_reset(uint8_t symb)
 {
+	if (!has_init)
+		srand(time(NULL));
 	history_indx = 0;
 	my_symbol = symb;
 }
@@ -48,6 +51,10 @@ void menace_make_move(board_t* from, board_t* to)
 		ht_put(fromkey);
 		ht_get_element(ht_find_element_slot(fromkey), &ht_matched);
 	}
+
+	int sum = 3;//NEED TO ACTUALL FIND SUM
+
+	int rnd = rand() % sum;
 
 
 
