@@ -80,3 +80,11 @@ int ht_get_table_used_count()
 	return ht_used_slots;
 }
 
+bool ht_get_moves(int key, uint8_t** fillto)
+{
+	int indx = ht_find_element_slot(key);
+	if(ht_arr[indx].key == 0)
+		return false;
+	(*fillto) = ht_arr[indx].moves;
+}
+
