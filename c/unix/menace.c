@@ -1,25 +1,56 @@
 
 #include "menace.h"
 
-uint8_t moves_indx = 0;
+uint8_t history_indx = 0;
 uint8_t my_symbol = -1;
 
-int key_buf[9];
+struct _menace_history_t_
+{
+	int key;
+	uint8_t indx;
+};
+typedef struct _menace_history_t_ menace_history_t;
 
+menace_history_t history[9];
 
 void menace_reset(uint8_t symb)
 {
-	moves_indx = 0;
+	history_indx = 0;
 	my_symbol = symb;
 }
 
 void menace_make_move(board_t* from, board_t* to)
 {
 	int fromkey = board_to_key(from);
-	board_transform_generic(from,to,0);
-	board_t ht_matched_board;
+	board_t board_matched;
+	board_t board_post_move;
+	board_t board_post_transback;
+	ht_element_t ht_matched;
 
-	uint8_t* moves;
+	uint8_t transid = 0;
+	int testkey = fromkey;
 
-	ht_get_moves(fromkey,&moves);
+	while (1)
+	{
+		int slot = ht_find_element_slot(testkey);
+		ht_get_element(slot, &ht_matched);
+		if (ht_matched.key == testkey)
+			break;
+		transid++;
+		if (transid >= 6)
+			break;
+		board_transform_generic(from, &board_matched, transid);
+		testkey = board_to_key(&board_matched);
+	}
+
+	if (transid >= 6)
+	{
+		ht_put(fromkey);
+		ht_get_element(ht_find_element_slot(fromkey), &ht_matched);
+	}
+
+
+
+
+	
 }

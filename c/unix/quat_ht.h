@@ -21,6 +21,6 @@ int ht_find_element_slot(int key);
 void ht_put(int key);
 void ht_print_fulltable();
 int ht_get_table_used_count();
-bool ht_get_moves();
+void ht_get_element(int indx, ht_element_t* fill);
 
 #endif

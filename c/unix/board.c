@@ -48,7 +48,7 @@ bool boards_hard_equal(board_t a, board_t b)
 	return true;
 }
 
-void board_transform_circular(board_t* from, board_t* to, int amount)
+void board_transform_circular(board_t* from, board_t* to, uint8_t amount)
 {
 	for (int i = 0; i < 8; i++)
 	{
@@ -101,6 +101,18 @@ void board_transform_generic(board_t* from, board_t* to, uint8_t tid)
 		board_transform_flip_TB(from,to);
 }
 
+uint8_t board_get_transform_backid(uint8_t tid)
+{
+	if (tid == ID_TRANS_NONE 
+		|| tid == ID_TRANS_180 
+		|| ID_TRANS_FLIP_TB 
+		|| ID_TRANS_FLIP_LR)
+		return tid;
+	else if (tid == ID_TRANS_CLOCKWISE)
+		return ID_TRANS_COUNTERCLOCKWISE;
+	else if (tid == ID_TRANS_COUNTERCLOCKWISE)
+		return ID_TRANS_CLOCKWISE;
+}
 
 bool board_is_full(board_t* board)
 {
