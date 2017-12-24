@@ -28,7 +28,7 @@ void menace_make_move(board_t* from, board_t* to)
 	board_t board_matched;
 	board_t board_post_move;
 	board_t board_post_transback;
-	ht_element_t ht_matched;
+	ht_element_t ht_matched; //BROKE
 
 	uint8_t transid = 0;
 	int testkey = fromkey;
@@ -36,7 +36,7 @@ void menace_make_move(board_t* from, board_t* to)
 	while (1)
 	{
 		int slot = ht_find_element_slot(testkey);
-		ht_get_element(slot, &ht_matched);
+		ht_get_element(slot, &ht_matched); //BROKE
 		if (ht_matched.key == testkey)
 			break;
 		transid++;
@@ -49,10 +49,14 @@ void menace_make_move(board_t* from, board_t* to)
 	if (transid >= 6)
 	{
 		ht_put(fromkey);
-		ht_get_element(ht_find_element_slot(fromkey), &ht_matched);
+		ht_get_element(ht_find_element_slot(fromkey), &ht_matched); //BROKE
 	}
 
-	int sum = 3;//NEED TO ACTUALL FIND SUM
+	int sum = 0;
+	for(int i = 0; i < 9; i++)
+	{
+		sum += ht_matched.moves[i];
+	}
 
 	int rnd = rand() % sum;
 

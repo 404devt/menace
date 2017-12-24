@@ -80,8 +80,8 @@ int ht_get_table_used_count()
 	return ht_used_slots;
 }
 
-void ht_get_element(int indx, ht_element_t* fill)
+void ht_get_element(int indx, ht_element_t* fill) //BROKE
 {
-	fill = &(ht_arr[indx]);
+	fill = &(ht_arr[indx]); //BROKE
 }
 
