@@ -37,13 +37,22 @@ int main()
 	// 	print_board(&to);
 	// }
 
+	// ht_print_fulltable();
+
 	ht_put(key);
 
+	ht_print_fulltable();
+
 	ht_element_t* tofill;
-	int indx = ht_find_element_slot(key);
+
+	int indx = -1;
+
+	printf("indx:%d pt:%d Key:%d and \n\n", indx, tofill,tofill->key);
+
+	indx = ht_find_element_slot(key);
 	ht_get_element(indx , &tofill);
 
-	printf("Key:%d and \n\n", tofill->key);
+	printf("indx:%d pt:%d Key:%d and \n\n", indx, tofill,tofill->key);
 
 }
 

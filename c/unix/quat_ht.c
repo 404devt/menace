@@ -71,7 +71,7 @@ void ht_print_fulltable()
 	for(int i = 0; i < HT_TABLE_SIZE; i++)
 	{
 		ht_sprint_element(buf, i);
-		printf("indx=%03d %s\n",i,buf);
+		printf("loc=%d i=%03d %s\n",(&ht_arr[i]),i,buf);
 	}
 }
 
