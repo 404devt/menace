@@ -19,23 +19,31 @@ int main()
 	printf("END FILLED BOARD\n");
 
 
-	uint8_t moves[9];
-	board_fill_empty_moves(key,moves);
-	printf("MOVES: [");
-	for(int i = 0; i < 9; i++)
-	{
-		printf("%d",moves[i]);
-		if(i != 8)
-			printf(",");
-	}
-	printf("]\n");
+	// uint8_t moves[9];
+	// board_fill_empty_moves(key,moves);
+	// printf("MOVES: [");
+	// for(int i = 0; i < 9; i++)
+	// {
+	// 	printf("%d",moves[i]);
+	// 	if(i != 8)
+	// 		printf(",");
+	// }
+	// printf("]\n");
 
-	board_t to;
-	for (int i = 0; i <= 5; i++)
-	{
-		board_transform_generic(&a,&to,i);
-		print_board(&to);
-	}
+	// board_t to;
+	// for (int i = 0; i <= 5; i++)
+	// {
+	// 	board_transform_generic(&a,&to,i);
+	// 	print_board(&to);
+	// }
+
+	ht_put(key);
+
+	ht_element_t* tofill;
+	int indx = ht_find_element_slot(key);
+	ht_get_element(indx , &tofill);
+
+	printf("Key:%d and \n\n", tofill->key);
 
 }
 

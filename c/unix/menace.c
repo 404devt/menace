@@ -59,6 +59,7 @@ void menace_make_move(board_t* from, board_t* to)
 	}
 
 	int rnd = rand() % sum;
+// VERY UNFINISHED
 
 
 
