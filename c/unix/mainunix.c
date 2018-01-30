@@ -47,12 +47,13 @@ int main()
 
 	int indx = -1;
 
-	printf("indx:%d pt:%d Key:%d and \n\n", indx, tofill,tofill->key);
+	// this line segfaults
+	// printf("indx:%d pt:%d Key:%d and \n\n", indx, tofill,tofill->key);
 
 	indx = ht_find_element_slot(key);
 	ht_get_element(indx , &tofill);
 
-	printf("indx:%d pt:%d Key:%d and \n\n", indx, tofill,tofill->key);
+	printf("indx:%d pt:%d Key:%d \n", indx, tofill,tofill->key);
 
 }
 
