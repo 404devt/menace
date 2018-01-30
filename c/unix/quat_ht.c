@@ -82,7 +82,7 @@ int ht_get_table_used_count()
 
 void ht_get_element(int indx, ht_element_t** fill)
 {
-	ht_element_t* memlocation = (*fill);
-	memlocation = &(ht_arr[indx]);
+	
+	(*fill) = (ht_arr + indx);
 }
 
